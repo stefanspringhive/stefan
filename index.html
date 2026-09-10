@@ -36,13 +36,23 @@
     background:rgba(21,14,43,0.85);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+    transition:background .3s ease, box-shadow .3s ease, padding .3s ease;
   }
+  nav.nav-scrolled{
+    background:rgba(21,14,43,0.96);
+    box-shadow:0 12px 30px -16px rgba(0,0,0,0.6);
+  }
+  nav.nav-scrolled .wrap{padding-top:12px;padding-bottom:12px;}
   nav .wrap{
     display:grid;
     grid-template-columns:auto 1fr auto;
     align-items:center;
     gap:24px;
     padding:18px 32px;
+    transition:padding .3s ease;
   }
   .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:18px;}
   .logo-mark{
@@ -506,6 +516,35 @@
     .footer-grid{grid-template-columns:1fr;gap:32px;}
     .footer-bottom{flex-direction:column;text-align:center;}
   }
+
+  /* ===== Scroll reveal ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity .8s cubic-bezier(.16,.84,.44,1), transform .8s cubic-bezier(.16,.84,.44,1);
+    will-change:opacity, transform;
+  }
+  .reveal.reveal-up{transform:translateY(-30px);}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+
+  .skills-grid .skill-card:nth-child(1){transition-delay:0s;}
+  .skills-grid .skill-card:nth-child(2){transition-delay:.08s;}
+  .skills-grid .skill-card:nth-child(3){transition-delay:.16s;}
+  .skills-grid .skill-card:nth-child(4){transition-delay:.24s;}
+  .skills-grid .skill-card:nth-child(5){transition-delay:.32s;}
+  .skills-grid .skill-card:nth-child(6){transition-delay:.4s;}
+
+  .experience-highlights .highlight-row:nth-child(1){transition-delay:0s;}
+  .experience-highlights .highlight-row:nth-child(2){transition-delay:.12s;}
+  .experience-highlights .highlight-row:nth-child(3){transition-delay:.24s;}
+
+  .footer-grid .footer-brand{transition-delay:0s;}
+  .footer-grid .footer-col:nth-child(2){transition-delay:.1s;}
+  .footer-grid .footer-col:nth-child(3){transition-delay:.2s;}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
 </style>
 </head>
 <body>
@@ -588,14 +627,14 @@
   <!-- Skills -->
   <section class="skills" id="skills">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="kicker">What I do</span>
         <h2>Skills that turn ideas into working websites</h2>
         <p>A practical toolkit built over three years of shipping sites that load fast, look sharp on any screen, and stay easy to maintain.</p>
       </div>
 
       <div class="skills-grid">
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <div class="skill-media">
             <img src="https://picsum.photos/seed/skill-code/500/340" alt="Code editor representing front-end development" loading="lazy">
           </div>
@@ -606,7 +645,7 @@
           </div>
         </div>
 
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <div class="skill-media">
             <img src="https://picsum.photos/seed/skill-responsive/500/340" alt="Multiple devices representing responsive design" loading="lazy">
           </div>
@@ -617,7 +656,7 @@
           </div>
         </div>
 
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <div class="skill-media">
             <img src="https://picsum.photos/seed/skill-react/500/340" alt="Dashboard interface representing React development" loading="lazy">
           </div>
@@ -628,7 +667,7 @@
           </div>
         </div>
 
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <div class="skill-media">
             <img src="https://picsum.photos/seed/skill-cms/500/340" alt="Content management screen representing WordPress builds" loading="lazy">
           </div>
@@ -639,7 +678,7 @@
           </div>
         </div>
 
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <div class="skill-media">
             <img src="https://picsum.photos/seed/skill-speed/500/340" alt="Performance graph representing site speed and SEO" loading="lazy">
           </div>
@@ -650,7 +689,7 @@
           </div>
         </div>
 
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <div class="skill-media">
             <img src="https://picsum.photos/seed/skill-browser/500/340" alt="Browser windows representing cross-browser testing" loading="lazy">
           </div>
@@ -668,28 +707,28 @@
   <section class="experience" id="experience">
     <div class="wrap">
       <div class="experience-copy">
-        <div class="section-head">
+        <div class="section-head reveal">
           <span class="kicker">My journey</span>
           <h2>Three years of turning briefs into working sites</h2>
         </div>
         <p class="lead">I started out fixing small layout bugs for local businesses and grew that into full end-to-end builds — from first sketch to a site that's live, fast, and easy for the client to run on their own.</p>
 
         <div class="experience-highlights">
-          <div class="highlight-row">
+          <div class="highlight-row reveal">
             <div class="highlight-dot">1</div>
             <div>
               <h4>Discovery first</h4>
               <p>Every project starts with understanding what the site actually needs to do, not just how it should look.</p>
             </div>
           </div>
-          <div class="highlight-row">
+          <div class="highlight-row reveal">
             <div class="highlight-dot">2</div>
             <div>
               <h4>Built to last</h4>
               <p>Clean code and sensible structure, so the site is easy to extend or hand off later.</p>
             </div>
           </div>
-          <div class="highlight-row">
+          <div class="highlight-row reveal">
             <div class="highlight-dot">3</div>
             <div>
               <h4>Support after launch</h4>
@@ -699,7 +738,7 @@
         </div>
       </div>
 
-      <div class="experience-panel">
+      <div class="experience-panel reveal">
         <div class="big-stat"><b>3+</b><span>years experience</span></div>
         <p class="panel-desc">Based in Tuburan, Cebu, working with clients locally and remotely.</p>
         <div class="mini-stats">
@@ -715,7 +754,7 @@
   <!-- Contact -->
   <section class="contact" id="contact">
     <div class="wrap">
-      <div class="contact-form-panel">
+      <div class="contact-form-panel reveal">
         <div class="section-head">
           <span class="kicker">Get in touch</span>
           <h2>Let's build your next website</h2>
@@ -745,7 +784,7 @@
         </form>
       </div>
 
-      <div class="contact-illustration">
+      <div class="contact-illustration reveal">
         <div class="glow"></div>
         <svg viewBox="0 0 380 460" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -811,11 +850,11 @@
   <footer>
     <div class="wrap">
       <div class="footer-grid">
-        <div class="footer-brand">
+        <div class="footer-brand reveal">
           <div class="logo"><span class="logo-mark">SH</span>Stefan</div>
           <p>Website developer based in Tuburan, Cebu, building fast, responsive sites for small businesses and founders.</p>
         </div>
-        <div class="footer-col">
+        <div class="footer-col reveal">
           <h4>Quick links</h4>
           <ul>
             <li><a href="#skills">Skills</a></li>
@@ -823,7 +862,7 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
-        <div class="footer-col">
+        <div class="footer-col reveal">
           <h4>Get in touch</h4>
           <div class="contact-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
@@ -892,6 +931,46 @@
   const stageWrap = document.querySelector('.stage-wrap');
   stageWrap.addEventListener('mouseenter', () => clearInterval(timer));
   stageWrap.addEventListener('mouseleave', resetTimer);
+
+  // ===== Scroll reveal (both directions) =====
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if (prefersReduced) {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  } else {
+    let lastY = window.scrollY;
+    let scrollDir = 'down';
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      scrollDir = y > lastY ? 'down' : 'up';
+      lastY = y;
+    }, { passive: true });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.toggle('reveal-up', scrollDir === 'up');
+          entry.target.classList.add('is-visible');
+        } else {
+          entry.target.classList.remove('is-visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  }
+
+  // ===== Nav shrink on scroll =====
+  const siteNav = document.querySelector('nav');
+  let lastScrolled = false;
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 24;
+    if (scrolled !== lastScrolled) {
+      siteNav.classList.toggle('nav-scrolled', scrolled);
+      lastScrolled = scrolled;
+    }
+  }, { passive: true });
 </script>
 
 </body>
