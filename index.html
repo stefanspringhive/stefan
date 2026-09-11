@@ -86,7 +86,48 @@
     box-shadow:0 10px 24px -10px rgba(45,212,224,0.55);
     transform:translateY(-1px);
   }
-  .nav-toggle{display:none;background:none;border:none;color:var(--hi);font-size:26px;cursor:pointer;}
+  .nav-toggle{
+    display:none;
+    background:rgba(246,243,255,0.06);
+    border:1px solid var(--line);
+    color:var(--hi);
+    font-size:20px;
+    width:40px;height:40px;
+    border-radius:10px;
+    cursor:pointer;
+    align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+
+  .mobile-menu{
+    display:none;
+    max-height:0;
+    overflow:hidden;
+    background:rgba(21,14,43,0.98);
+    border-bottom:1px solid var(--line);
+    transition:max-height .35s ease;
+  }
+  .mobile-menu.open{max-height:340px;}
+  .mobile-menu-inner{display:flex;flex-direction:column;padding:8px 24px 20px;gap:2px;}
+  .mobile-menu a{
+    color:var(--mid);
+    font-size:15.5px;font-weight:500;
+    padding:13px 6px;
+    border-bottom:1px solid var(--line);
+    transition:color .2s ease;
+  }
+  .mobile-menu a:last-of-type{border-bottom:none;}
+  .mobile-menu a:hover{color:var(--hi);}
+  .mobile-menu .mobile-menu-cta{
+    margin-top:14px;
+    text-align:center;
+    background:linear-gradient(100deg,var(--violet),var(--magenta));
+    color:#fff;
+    font-weight:600;
+    border-radius:999px;
+    padding:13px 6px;
+    border-bottom:none;
+  }
 
   /* ===== Contact strip ===== */
   .contact-strip{
@@ -242,11 +283,17 @@
     .stage-wrap{order:-1;height:340px;}
     .nav-links{display:none;}
     .nav-cta{display:none;}
-    .nav-toggle{display:block;}
+    .nav-toggle{display:flex;}
+    .mobile-menu{display:block;}
+    nav .wrap{display:flex;justify-content:space-between;align-items:center;}
   }
   @media(max-width:560px){
     .wrap{padding:0 20px;}
     .contact-strip .wrap{gap:12px;font-size:12.5px;}
+  }
+  @media(max-width:400px){
+    .stage-wrap{height:300px;}
+    .stage,.card3d{width:230px;height:280px;}
   }
   @media (prefers-reduced-motion: reduce){
     .hero-copy{animation:none;opacity:1;transform:none;}
@@ -412,6 +459,11 @@
   @media(max-width:920px){
     .experience .wrap{grid-template-columns:1fr;}
     .experience{padding:80px 0 96px;}
+  }
+  @media(max-width:560px){
+    .experience-panel{padding:32px 24px;}
+    .mini-stats{grid-template-columns:1fr 1fr;gap:12px;}
+    .experience-panel .big-stat b{font-size:52px;}
   }
 
   /* ===== Contact section ===== */
@@ -891,7 +943,16 @@
         <a href="#contact">Contact</a>
       </div>
       <a href="#contact" class="nav-cta">Hire me</a>
-      <button class="nav-toggle" aria-label="Open menu">☰</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-inner">
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#showcase">Compare</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="mobile-menu-cta">Hire me</a>
+      </div>
     </div>
   </nav>
 
@@ -1461,6 +1522,22 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && privacyModal.classList.contains('active')) closePrivacyModal();
   });
+
+  // ===== Mobile menu =====
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  function closeMobileMenu(){
+    mobileMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.textContent = '☰';
+  }
+  navToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    navToggle.textContent = isOpen ? '✕' : '☰';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
 
   // ===== Welcome intro overlay =====
   const introOverlay = document.getElementById('introOverlay');
