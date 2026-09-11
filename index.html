@@ -1033,13 +1033,62 @@
 
       <div class="contact-illustration reveal">
         <div class="glow"></div>
-        <div class="human-photo">
-          <img src="https://images.pexels.com/photos/652355/pexels-photo-652355.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Person confidently pointing toward the contact form">
-          <div class="pointer-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Fill this out
-          </div>
-        </div>
+        <svg viewBox="0 0 380 460" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shirtGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#8B5CF6"/>
+              <stop offset="100%" stop-color="#F0479A"/>
+            </linearGradient>
+            <linearGradient id="floorGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2DD4E0" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.18"/>
+            </linearGradient>
+          </defs>
+
+          <ellipse cx="190" cy="430" rx="140" ry="16" fill="url(#floorGrad)"/>
+
+          <!-- dashed pointer trail toward the form (left) -->
+          <path d="M110 230 C60 220, 20 205, -20 195" stroke="#2DD4E0" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" fill="none" opacity="0.8"/>
+
+          <!-- legs -->
+          <rect x="150" y="300" width="34" height="110" rx="16" fill="#221A44"/>
+          <rect x="196" y="300" width="34" height="110" rx="16" fill="#1A1436"/>
+
+          <!-- shoes -->
+          <rect x="144" y="400" width="46" height="18" rx="9" fill="#150E2B"/>
+          <rect x="192" y="400" width="46" height="18" rx="9" fill="#150E2B"/>
+
+          <!-- torso -->
+          <path d="M140 190 Q190 168 240 190 L250 305 Q190 325 130 305 Z" fill="url(#shirtGrad)"/>
+
+          <!-- right arm (relaxed, on our right) -->
+          <path d="M238 200 Q262 225 258 270 Q256 288 240 292" stroke="url(#shirtGrad)" stroke-width="26" stroke-linecap="round" fill="none"/>
+
+          <!-- left arm extended, pointing toward the form -->
+          <path d="M148 205 Q95 205 60 195" stroke="url(#shirtGrad)" stroke-width="26" stroke-linecap="round" fill="none"/>
+          <!-- hand / pointing finger -->
+          <ellipse cx="46" cy="193" rx="16" ry="13" fill="#E8B89B"/>
+          <rect x="14" y="186" width="30" height="11" rx="5.5" fill="#E8B89B"/>
+
+          <!-- neck -->
+          <rect x="176" y="150" width="28" height="30" rx="10" fill="#E8B89B"/>
+
+          <!-- head -->
+          <circle cx="190" cy="128" r="42" fill="#E8B89B"/>
+
+          <!-- hair -->
+          <path d="M150 122 Q148 82 190 78 Q232 82 230 122 Q220 100 190 100 Q160 100 150 122 Z" fill="#2A1B3D"/>
+
+          <!-- simple face -->
+          <circle cx="176" cy="130" r="3.5" fill="#221A44"/>
+          <circle cx="204" cy="130" r="3.5" fill="#221A44"/>
+          <path d="M178 146 Q190 154 202 146" stroke="#221A44" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+          <!-- decorative dots -->
+          <circle cx="330" cy="90" r="6" fill="#FFB020" opacity="0.85"/>
+          <circle cx="350" cy="140" r="4" fill="#2DD4E0" opacity="0.8"/>
+          <circle cx="310" cy="60" r="4" fill="#F0479A" opacity="0.8"/>
+        </svg>
       </div>
     </div>
   </section>
