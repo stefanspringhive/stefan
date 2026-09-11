@@ -676,6 +676,143 @@
     .footer-grid{grid-template-columns:1fr;gap:32px;}
     .footer-bottom{flex-direction:column;text-align:center;}
   }
+  .footer-bottom-links{display:inline-flex;align-items:center;gap:10px;}
+  .footer-bottom-links a{color:var(--mid);transition:color .2s ease;}
+  .footer-bottom-links a:hover{color:var(--hi);text-decoration:underline;}
+  .footer-bottom .dot-sep{opacity:0.5;}
+
+  /* ===== Privacy policy modal ===== */
+  .modal-overlay{
+    position:fixed;inset:0;
+    background:rgba(10,6,20,0.72);
+    backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    z-index:200;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .3s ease;
+  }
+  .modal-overlay.active{opacity:1;pointer-events:auto;}
+  .modal-box{
+    background:linear-gradient(180deg,rgba(30,20,64,0.98),rgba(21,14,43,0.98));
+    border:1px solid rgba(246,243,255,0.16);
+    border-radius:24px;
+    width:100%;
+    max-width:640px;
+    max-height:82vh;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 50px 100px -24px rgba(0,0,0,0.75);
+    transform:translateY(24px) scale(0.98);
+    transition:transform .32s cubic-bezier(.16,.84,.44,1);
+  }
+  .modal-overlay.active .modal-box{transform:translateY(0) scale(1);}
+  .modal-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 26px;
+    border-bottom:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .modal-header h3{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:700;}
+  .modal-close{
+    background:rgba(246,243,255,0.06);
+    border:1px solid var(--line);
+    color:var(--mid);
+    width:34px;height:34px;border-radius:50%;
+    font-size:20px;line-height:1;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease, color .2s ease;
+  }
+  .modal-close:hover{background:rgba(240,71,154,0.2);color:var(--hi);}
+  .modal-body{
+    padding:24px 26px 32px;
+    overflow-y:auto;
+    color:var(--mid);
+    font-size:14.5px;
+    line-height:1.75;
+  }
+  .modal-body h4{
+    font-family:'Space Grotesk',sans-serif;
+    color:var(--hi);
+    font-size:15px;
+    font-weight:600;
+    margin:22px 0 8px;
+  }
+  .modal-body h4:first-of-type{margin-top:0;}
+  .modal-body p{margin-bottom:10px;}
+  .modal-body ul{padding-left:20px;margin-bottom:10px;}
+  .modal-body li{margin-bottom:4px;}
+  .modal-body a{color:var(--cyan);text-decoration:underline;}
+  .modal-body::-webkit-scrollbar{width:8px;}
+  .modal-body::-webkit-scrollbar-thumb{background:rgba(246,243,255,0.15);border-radius:8px;}
+
+  @media(max-width:560px){
+    .modal-box{max-height:88vh;}
+    .modal-header{padding:18px 20px;}
+    .modal-body{padding:18px 20px 26px;}
+  }
+
+  /* ===== Welcome intro overlay ===== */
+  .intro-overlay{
+    position:fixed;inset:0;
+    z-index:300;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    background:
+      radial-gradient(circle at 25% 20%, rgba(139,92,246,0.35), transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(240,71,154,0.3), transparent 55%),
+      rgba(10,6,20,0.92);
+    backdrop-filter:blur(16px);
+    cursor:pointer;
+    transition:opacity .55s ease;
+  }
+  .intro-overlay.hide{
+    opacity:0;
+    pointer-events:none;
+  }
+  .intro-card{
+    position:relative;
+    background:linear-gradient(180deg,rgba(30,20,64,0.95),rgba(21,14,43,0.95));
+    border:1px solid rgba(246,243,255,0.18);
+    border-radius:28px;
+    padding:50px 44px 42px;
+    max-width:420px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 60px 130px -30px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.06);
+    cursor:default;
+    transform:scale(1) translateY(0);
+    transition:transform .5s cubic-bezier(.16,.84,.44,1);
+  }
+  .intro-overlay.hide .intro-card{
+    transform:scale(0.9) translateY(-18px);
+  }
+  .intro-logo{
+    width:60px;height:60px;border-radius:16px;
+    background:linear-gradient(135deg,var(--violet),var(--magenta));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Space Grotesk',sans-serif;font-weight:800;font-size:22px;color:#fff;
+    margin:0 auto 24px;
+    box-shadow:0 16px 34px -10px rgba(240,71,154,0.55);
+  }
+  .intro-card h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:25px;font-weight:700;
+    margin-bottom:12px;
+  }
+  .intro-card p{color:var(--mid);font-size:14.5px;max-width:32ch;margin:0 auto 30px;}
+  .intro-hint{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:13px;font-weight:600;color:var(--cyan);
+    animation:introPulse 1.8s ease-in-out infinite;
+  }
+  .intro-hint svg{width:16px;height:16px;}
+  @keyframes introPulse{0%,100%{opacity:0.55;transform:translateY(0);}50%{opacity:1;transform:translateY(-2px);}}
+
+  @media(max-width:560px){
+    .intro-card{padding:40px 28px 34px;}
+  }
 
   /* ===== Scroll reveal ===== */
   .reveal{
@@ -711,6 +848,19 @@
 </style>
 </head>
 <body>
+
+  <!-- Welcome intro overlay -->
+  <div class="intro-overlay" id="introOverlay">
+    <div class="intro-card">
+      <div class="intro-logo">SH</div>
+      <h2>Hi, I'm Stefan 👋</h2>
+      <p>Website developer based in Tuburan, Cebu — building fast, colorful sites for small businesses and founders.</p>
+      <span class="intro-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12h6M12 9v6"/><circle cx="12" cy="12" r="9"/></svg>
+        Click anywhere to enter
+      </span>
+    </div>
+  </div>
 
   <!-- Contact strip -->
   <div class="contact-strip">
@@ -1127,10 +1277,69 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 Stefan. All rights reserved.</span>
-        <span>Built with care in Cebu.</span>
+        <span class="footer-bottom-links">
+          <a href="#" id="privacyLink">Privacy Policy</a>
+          <span class="dot-sep">•</span>
+          Built with care in Cebu.
+        </span>
       </div>
     </div>
   </footer>
+
+  <!-- Privacy Policy modal -->
+  <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyModalTitle">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="privacyModalTitle">Privacy Policy</h3>
+        <button class="modal-close" id="privacyClose" aria-label="Close privacy policy">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p><em>Last updated: September 2026</em></p>
+
+        <h4>Introduction</h4>
+        <p>This Privacy Policy explains how Stefan ("I", "me") collects, uses, and protects information when you visit this website or use the contact form. By using this site, you agree to the practices described below.</p>
+
+        <h4>Information I collect</h4>
+        <p>When you submit the contact form, I collect the information you provide directly, which may include:</p>
+        <ul>
+          <li>Your full name</li>
+          <li>Your email address</li>
+          <li>The subject and content of your message</li>
+        </ul>
+        <p>I do not knowingly collect sensitive personal information, payment details, or information from anyone under the age of 18 through this site.</p>
+
+        <h4>How I use your information</h4>
+        <p>Information submitted through the contact form is used only to:</p>
+        <ul>
+          <li>Respond to your inquiry or project request</li>
+          <li>Follow up about a potential or ongoing project</li>
+          <li>Keep basic records of client communication</li>
+        </ul>
+        <p>I do not use your information for advertising, and I do not sell or rent your personal information to third parties.</p>
+
+        <h4>Cookies and analytics</h4>
+        <p>This site may use basic, privacy-friendly analytics to understand general traffic patterns (such as which pages are visited). This data is aggregated and is not used to personally identify you. No advertising cookies or third-party trackers are used.</p>
+
+        <h4>Data sharing</h4>
+        <p>Your information is not shared with third parties, except where required by law or where necessary to deliver a service you've specifically requested (for example, a shared project tool you ask me to use to collaborate).</p>
+
+        <h4>Data retention</h4>
+        <p>Contact form submissions are kept only as long as needed to respond to your inquiry or maintain a record of an ongoing working relationship, after which they may be deleted.</p>
+
+        <h4>Your rights</h4>
+        <p>You can request to see, correct, or delete any personal information I hold about you at any time by emailing me directly using the contact details below. I will respond to reasonable requests within a reasonable timeframe.</p>
+
+        <h4>Security</h4>
+        <p>I take reasonable precautions to protect the information you share, but no method of transmission over the internet is 100% secure, and I can't guarantee absolute security.</p>
+
+        <h4>Changes to this policy</h4>
+        <p>This Privacy Policy may be updated occasionally to reflect changes in practices. Any changes will be posted on this page with an updated "last updated" date.</p>
+
+        <h4>Contact</h4>
+        <p>If you have questions about this Privacy Policy or your personal information, reach out at <a href="mailto:stefan.springhive@gmail.com">stefan.springhive@gmail.com</a> or <a href="tel:09106716706">0910 671 6706</a>, based in Tuburan, Cebu, PH.</p>
+      </div>
+    </div>
+  </div>
 
 <script>
   const stage = document.getElementById('stage');
@@ -1226,6 +1435,45 @@
     range.addEventListener('input', update);
     update();
   });
+
+  // ===== Privacy policy modal =====
+  const privacyLink = document.getElementById('privacyLink');
+  const privacyModal = document.getElementById('privacyModal');
+  const privacyClose = document.getElementById('privacyClose');
+
+  function openPrivacyModal(){
+    privacyModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePrivacyModal(){
+    privacyModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  privacyLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    openPrivacyModal();
+  });
+  privacyClose.addEventListener('click', closePrivacyModal);
+  privacyModal.addEventListener('click', (e) => {
+    if (e.target === privacyModal) closePrivacyModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && privacyModal.classList.contains('active')) closePrivacyModal();
+  });
+
+  // ===== Welcome intro overlay =====
+  const introOverlay = document.getElementById('introOverlay');
+  document.body.style.overflow = 'hidden';
+
+  function dismissIntro(){
+    introOverlay.classList.add('hide');
+    document.body.style.overflow = '';
+    introOverlay.addEventListener('transitionend', () => {
+      introOverlay.style.display = 'none';
+    }, { once: true });
+  }
+  introOverlay.addEventListener('click', dismissIntro);
 </script>
 
 </body>
