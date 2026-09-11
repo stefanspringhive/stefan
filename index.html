@@ -487,6 +487,125 @@
     .form-grid-2{grid-template-columns:1fr;}
   }
 
+  /* ===== Before / After comparison ===== */
+  .showcase{padding:100px 0 20px;position:relative;}
+  .showcase-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:44px;
+  }
+  .compare-block h3{
+    font-family:'Sora',sans-serif;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .compare-block .drag-hint{
+    display:flex;align-items:center;gap:8px;
+    color:var(--mid);font-size:13px;
+    margin-bottom:16px;
+  }
+  .compare-block .drag-hint svg{width:15px;height:15px;color:var(--cyan);}
+
+  .compare{
+    position:relative;
+    width:100%;
+    aspect-ratio:4/3;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 30px 60px -26px rgba(0,0,0,0.6);
+    touch-action:pan-y;
+    background:var(--surface);
+  }
+  .compare .layer{position:absolute;inset:0;}
+  .compare .layer img{width:100%;height:100%;object-fit:cover;display:block;}
+  .compare .after-layer{z-index:1;}
+  .compare .before-layer{
+    z-index:2;
+    clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0);
+  }
+  .badge{
+    position:absolute;top:14px;z-index:3;
+    background:rgba(21,14,43,0.72);
+    backdrop-filter:blur(4px);
+    padding:6px 13px;border-radius:999px;
+    font-size:12px;font-weight:600;
+    border:1px solid rgba(255,255,255,0.12);
+  }
+  .badge-before{left:14px;}
+  .badge-after{right:14px;}
+
+  .compare-handle{
+    position:absolute;top:0;bottom:0;
+    left:var(--pos,50%);
+    transform:translateX(-50%);
+    z-index:4;
+    pointer-events:none;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .compare-handle .line{
+    position:absolute;top:0;bottom:0;left:50%;
+    width:2px;transform:translateX(-50%);
+    background:linear-gradient(180deg,var(--cyan),var(--magenta));
+    box-shadow:0 0 12px rgba(45,212,224,0.5);
+  }
+  .compare-handle .knob{
+    width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(135deg,var(--violet),var(--magenta));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(0,0,0,0.6);
+    border:2px solid rgba(255,255,255,0.4);
+    gap:3px;
+  }
+  .compare-handle .knob svg{width:12px;height:12px;}
+
+  .compare-range{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    margin:0;
+    appearance:none;
+    -webkit-appearance:none;
+    background:transparent;
+    cursor:ew-resize;
+    z-index:5;
+    opacity:0;
+  }
+  .compare-range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:100%;background:transparent;cursor:ew-resize;}
+  .compare-range::-moz-range-thumb{width:44px;height:100%;background:transparent;border:none;cursor:ew-resize;}
+  .compare-range::-moz-range-track{background:transparent;}
+
+  /* SEO gauge panels */
+  .seo-panel{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
+  .seo-panel.before{background:linear-gradient(160deg,#241A46,#1A1436);}
+  .seo-panel.after{background:linear-gradient(160deg,#2DD4E0,#8B5CF6 60%,#F0479A);}
+  .seo-gauge{width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .seo-panel.before .seo-gauge{background:conic-gradient(#9A93B8 42%, rgba(255,255,255,0.1) 0);}
+  .seo-panel.after .seo-gauge{background:conic-gradient(#FFFFFF 96%, rgba(255,255,255,0.25) 0);}
+  .seo-gauge-inner{
+    width:84px;height:84px;border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+  }
+  .seo-panel.before .seo-gauge-inner{background:#1A1436;}
+  .seo-panel.after .seo-gauge-inner{background:#2A1B54;}
+  .seo-gauge-inner b{font-family:'Sora',sans-serif;font-size:24px;font-weight:800;}
+  .seo-panel.before .seo-gauge-inner b{color:#B7ADD9;}
+  .seo-panel.after .seo-gauge-inner b{color:#fff;}
+  .seo-gauge-inner span{font-size:10px;color:var(--mid);}
+  .seo-panel.after .seo-gauge-inner span{color:rgba(255,255,255,0.75);}
+  .seo-label{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;}
+  .seo-panel.before .seo-label{color:var(--mid);}
+  .seo-panel.after .seo-label{color:#fff;}
+  .seo-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:0 24px;}
+  .seo-pill{font-size:10.5px;padding:4px 10px;border-radius:999px;font-weight:600;}
+  .seo-panel.before .seo-pill{background:rgba(255,255,255,0.06);color:var(--mid);border:1px solid var(--line);}
+  .seo-panel.after .seo-pill{background:rgba(255,255,255,0.2);color:#fff;}
+
+  @media(max-width:920px){
+    .showcase-grid{grid-template-columns:1fr;gap:52px;}
+    .showcase{padding:80px 0 10px;}
+  }
+
   /* ===== Footer ===== */
   footer{
     border-top:1px solid var(--line);
@@ -542,6 +661,9 @@
   .footer-grid .footer-col:nth-child(2){transition-delay:.1s;}
   .footer-grid .footer-col:nth-child(3){transition-delay:.2s;}
 
+  .showcase-grid .compare-block:nth-child(1){transition-delay:0s;}
+  .showcase-grid .compare-block:nth-child(2){transition-delay:.12s;}
+
   @media (prefers-reduced-motion: reduce){
     .reveal{opacity:1;transform:none;transition:none;}
   }
@@ -572,9 +694,9 @@
     <div class="wrap">
       <div class="logo"><span class="logo-mark">SH</span>Stefan</div>
       <div class="nav-links">
-        <a href="#work">Work</a>
         <a href="#skills">Skills</a>
-        <a href="#about">Experience</a>
+        <a href="#experience">Experience</a>
+        <a href="#showcase">Compare</a>
         <a href="#contact">Contact</a>
       </div>
       <a href="#contact" class="nav-cta">Hire me</a>
@@ -746,6 +868,90 @@
           <div class="mini-stat"><b>15+</b><span>Clients worked with</span></div>
           <div class="mini-stat"><b>&lt;24h</b><span>Typical response time</span></div>
           <div class="mini-stat"><b>100%</b><span>Responsive builds</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before / After showcase -->
+  <section class="showcase" id="showcase">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">Proof, not promises</span>
+        <h2>See the difference — drag to compare</h2>
+        <p>Slide left or right on each panel below to see the change side by side.</p>
+      </div>
+
+      <div class="showcase-grid">
+        <!-- 1. Website redesign -->
+        <div class="compare-block reveal">
+          <h3>Website redesign</h3>
+          <div class="drag-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7 3 12l5 5M16 7l5 5-5 5"/></svg>
+            Drag the handle to compare
+          </div>
+          <div class="compare" id="compareRedesign" style="--pos:50%">
+            <div class="layer after-layer">
+              <img src="https://picsum.photos/seed/redesign-after/700/525" alt="Website after redesign, full color">
+            </div>
+            <div class="layer before-layer">
+              <img src="https://picsum.photos/seed/redesign-after/700/525" alt="Website before redesign, dated look" style="filter:grayscale(0.85) brightness(0.72) contrast(0.9);">
+            </div>
+            <span class="badge badge-before">Before</span>
+            <span class="badge badge-after">After</span>
+            <div class="compare-handle">
+              <div class="line"></div>
+              <div class="knob">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M14 6l-6 6 6 6"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M10 6l6 6-6 6"/></svg>
+              </div>
+            </div>
+            <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Drag to compare website before and after redesign">
+          </div>
+        </div>
+
+        <!-- 2. SEO basic to premium -->
+        <div class="compare-block reveal">
+          <h3>SEO: basic to premium</h3>
+          <div class="drag-hint">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7 3 12l5 5M16 7l5 5-5 5"/></svg>
+            Drag the handle to compare
+          </div>
+          <div class="compare" id="compareSeo" style="--pos:50%">
+            <div class="layer after-layer">
+              <div class="seo-panel after">
+                <div class="seo-gauge"><div class="seo-gauge-inner"><b>96</b><span>SEO SCORE</span></div></div>
+                <span class="seo-label">Premium SEO</span>
+                <div class="seo-pills">
+                  <span class="seo-pill">Fast speed</span>
+                  <span class="seo-pill">Meta optimized</span>
+                  <span class="seo-pill">Backlinks</span>
+                  <span class="seo-pill">Full sitemap</span>
+                </div>
+              </div>
+            </div>
+            <div class="layer before-layer">
+              <div class="seo-panel before">
+                <div class="seo-gauge"><div class="seo-gauge-inner"><b>42</b><span>SEO SCORE</span></div></div>
+                <span class="seo-label">Basic SEO</span>
+                <div class="seo-pills">
+                  <span class="seo-pill">Slow speed</span>
+                  <span class="seo-pill">No meta tags</span>
+                  <span class="seo-pill">No backlinks</span>
+                </div>
+              </div>
+            </div>
+            <span class="badge badge-before">Before</span>
+            <span class="badge badge-after">After</span>
+            <div class="compare-handle">
+              <div class="line"></div>
+              <div class="knob">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M14 6l-6 6 6 6"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M10 6l6 6-6 6"/></svg>
+              </div>
+            </div>
+            <input type="range" class="compare-range" min="0" max="100" value="50" aria-label="Drag to compare SEO before and after optimization">
+          </div>
         </div>
       </div>
     </div>
@@ -971,6 +1177,14 @@
       lastScrolled = scrolled;
     }
   }, { passive: true });
+  // ===== Before / after compare sliders =====
+  document.querySelectorAll('.compare').forEach(compare => {
+    const range = compare.querySelector('.compare-range');
+    if (!range) return;
+    const update = () => compare.style.setProperty('--pos', range.value + '%');
+    range.addEventListener('input', update);
+    update();
+  });
 </script>
 
 </body>
