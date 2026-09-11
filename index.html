@@ -6,7 +6,7 @@
 <title>Stefan · Website Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --void:#150E2B;
@@ -27,7 +27,7 @@
     line-height:1.6;
     overflow-x:hidden;
   }
-  h1{font-family:'Sora',sans-serif;}
+  h1{font-family:'Space Grotesk',sans-serif;}
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1160px;margin:0 auto;padding:0 32px;}
 
@@ -54,7 +54,7 @@
     padding:18px 32px;
     transition:padding .3s ease;
   }
-  .logo{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:18px;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;}
   .logo-mark{
     width:36px;height:36px;border-radius:10px;
     background:linear-gradient(135deg,var(--violet),var(--magenta));
@@ -316,7 +316,7 @@
     color:var(--amber);
     margin-bottom:10px;
   }
-  .skill-card h3{font-family:'Sora',sans-serif;font-size:17.5px;font-weight:600;margin-bottom:10px;}
+  .skill-card h3{font-family:'Space Grotesk',sans-serif;font-size:17.5px;font-weight:600;margin-bottom:10px;}
   .skill-card p{color:var(--mid);font-size:14.5px;line-height:1.6;}
 
   @media(max-width:920px){
@@ -370,7 +370,7 @@
     font-size:14px;font-weight:800;color:var(--void);
     margin-top:2px;
   }
-  .highlight-row h4{font-family:'Sora',sans-serif;font-size:15.5px;font-weight:600;margin-bottom:4px;}
+  .highlight-row h4{font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:600;margin-bottom:4px;}
   .highlight-row p{color:var(--mid);font-size:14px;}
 
   .experience-panel{
@@ -386,7 +386,7 @@
     display:flex;align-items:baseline;gap:10px;margin-bottom:8px;
   }
   .experience-panel .big-stat b{
-    font-family:'Sora',sans-serif;
+    font-family:'Space Grotesk',sans-serif;
     font-size:64px;
     font-weight:800;
     background:linear-gradient(100deg,var(--cyan),var(--violet) 55%,var(--magenta));
@@ -405,7 +405,7 @@
     padding:16px 18px;
   }
   .mini-stat b{
-    display:block;font-family:'Sora',sans-serif;font-size:22px;font-weight:700;margin-bottom:2px;
+    display:block;font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:2px;
   }
   .mini-stat span{color:var(--mid);font-size:12.5px;}
 
@@ -477,6 +477,47 @@
   }
   .contact-illustration svg{position:relative;z-index:1;width:100%;max-width:360px;height:auto;}
 
+  .human-photo{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:380px;
+    border-radius:28px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.14);
+    box-shadow:0 40px 90px -28px rgba(0,0,0,0.7);
+  }
+  .human-photo img{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+    display:block;
+    filter:saturate(1.08) contrast(1.04);
+  }
+  .human-photo::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(139,92,246,0.12) 0%, transparent 35%, rgba(21,14,43,0.85) 100%);
+    pointer-events:none;
+  }
+  .pointer-badge{
+    position:absolute;
+    left:18px;bottom:18px;
+    z-index:2;
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(100deg,var(--violet),var(--magenta));
+    color:#fff;
+    padding:9px 16px;
+    border-radius:999px;
+    font-size:13px;font-weight:600;
+    box-shadow:0 14px 30px -12px rgba(240,71,154,0.6);
+  }
+  .pointer-badge svg{width:15px;height:15px;}
+
+  @media(max-width:560px){
+    .human-photo img{height:420px;}
+  }
+
   @media(max-width:920px){
     .contact .wrap{grid-template-columns:1fr;}
     .contact-illustration{order:-1;}
@@ -495,7 +536,7 @@
     gap:44px;
   }
   .compare-block h3{
-    font-family:'Sora',sans-serif;
+    font-family:'Space Grotesk',sans-serif;
     font-size:18px;
     font-weight:600;
     margin-bottom:6px;
@@ -588,12 +629,12 @@
   }
   .seo-panel.before .seo-gauge-inner{background:#1A1436;}
   .seo-panel.after .seo-gauge-inner{background:#2A1B54;}
-  .seo-gauge-inner b{font-family:'Sora',sans-serif;font-size:24px;font-weight:800;}
+  .seo-gauge-inner b{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:800;}
   .seo-panel.before .seo-gauge-inner b{color:#B7ADD9;}
   .seo-panel.after .seo-gauge-inner b{color:#fff;}
   .seo-gauge-inner span{font-size:10px;color:var(--mid);}
   .seo-panel.after .seo-gauge-inner span{color:rgba(255,255,255,0.75);}
-  .seo-label{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;}
+  .seo-label{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;}
   .seo-panel.before .seo-label{color:var(--mid);}
   .seo-panel.after .seo-label{color:#fff;}
   .seo-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:0 24px;}
@@ -619,7 +660,7 @@
     padding-bottom:48px;
   }
   .footer-brand p{color:var(--mid);font-size:14.5px;margin-top:14px;max-width:34ch;}
-  .footer-col h4{font-family:'Sora',sans-serif;font-size:14.5px;font-weight:600;margin-bottom:16px;}
+  .footer-col h4{font-family:'Space Grotesk',sans-serif;font-size:14.5px;font-weight:600;margin-bottom:16px;}
   .footer-col ul{display:flex;flex-direction:column;gap:11px;}
   .footer-col a{color:var(--mid);font-size:14px;transition:color .2s ease;}
   .footer-col a:hover{color:var(--hi);}
@@ -992,62 +1033,13 @@
 
       <div class="contact-illustration reveal">
         <div class="glow"></div>
-        <svg viewBox="0 0 380 460" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="shirtGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#8B5CF6"/>
-              <stop offset="100%" stop-color="#F0479A"/>
-            </linearGradient>
-            <linearGradient id="floorGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#2DD4E0" stop-opacity="0.18"/>
-              <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.18"/>
-            </linearGradient>
-          </defs>
-
-          <ellipse cx="190" cy="430" rx="140" ry="16" fill="url(#floorGrad)"/>
-
-          <!-- dashed pointer trail toward the form (left) -->
-          <path d="M110 230 C60 220, 20 205, -20 195" stroke="#2DD4E0" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" fill="none" opacity="0.8"/>
-
-          <!-- legs -->
-          <rect x="150" y="300" width="34" height="110" rx="16" fill="#221A44"/>
-          <rect x="196" y="300" width="34" height="110" rx="16" fill="#1A1436"/>
-
-          <!-- shoes -->
-          <rect x="144" y="400" width="46" height="18" rx="9" fill="#150E2B"/>
-          <rect x="192" y="400" width="46" height="18" rx="9" fill="#150E2B"/>
-
-          <!-- torso -->
-          <path d="M140 190 Q190 168 240 190 L250 305 Q190 325 130 305 Z" fill="url(#shirtGrad)"/>
-
-          <!-- right arm (relaxed, on our right) -->
-          <path d="M238 200 Q262 225 258 270 Q256 288 240 292" stroke="url(#shirtGrad)" stroke-width="26" stroke-linecap="round" fill="none"/>
-
-          <!-- left arm extended, pointing toward the form -->
-          <path d="M148 205 Q95 205 60 195" stroke="url(#shirtGrad)" stroke-width="26" stroke-linecap="round" fill="none"/>
-          <!-- hand / pointing finger -->
-          <ellipse cx="46" cy="193" rx="16" ry="13" fill="#E8B89B"/>
-          <rect x="14" y="186" width="30" height="11" rx="5.5" fill="#E8B89B"/>
-
-          <!-- neck -->
-          <rect x="176" y="150" width="28" height="30" rx="10" fill="#E8B89B"/>
-
-          <!-- head -->
-          <circle cx="190" cy="128" r="42" fill="#E8B89B"/>
-
-          <!-- hair -->
-          <path d="M150 122 Q148 82 190 78 Q232 82 230 122 Q220 100 190 100 Q160 100 150 122 Z" fill="#2A1B3D"/>
-
-          <!-- simple face -->
-          <circle cx="176" cy="130" r="3.5" fill="#221A44"/>
-          <circle cx="204" cy="130" r="3.5" fill="#221A44"/>
-          <path d="M178 146 Q190 154 202 146" stroke="#221A44" stroke-width="3" stroke-linecap="round" fill="none"/>
-
-          <!-- decorative dots -->
-          <circle cx="330" cy="90" r="6" fill="#FFB020" opacity="0.85"/>
-          <circle cx="350" cy="140" r="4" fill="#2DD4E0" opacity="0.8"/>
-          <circle cx="310" cy="60" r="4" fill="#F0479A" opacity="0.8"/>
-        </svg>
+        <div class="human-photo">
+          <img src="https://images.pexels.com/photos/652355/pexels-photo-652355.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Person confidently pointing toward the contact form">
+          <div class="pointer-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Fill this out
+          </div>
+        </div>
       </div>
     </div>
   </section>
